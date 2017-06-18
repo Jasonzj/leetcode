@@ -37,8 +37,8 @@ const pathSum = function(root, sum) {
 }
 
 const pathSum = function(root, sum) {
-    const result = []
     let q = []
+    const result = []
     const searchSum = function (root, sum) {
         if (!root) return false
         
