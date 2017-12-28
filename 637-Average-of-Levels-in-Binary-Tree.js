@@ -10,8 +10,8 @@
  * @return {number[]}
  */
 const averageOfLevels = function(root) {
-    if (!root) return []
     const result = []
+    if (!root) return result
     const preOrder = function(node, depth) {
         if (!node) return
         result[depth] ? result[depth].push(node.val) : result[depth] = [node.val]
