@@ -14,7 +14,11 @@ const averageOfLevels = function(root) {
     if (!root) return result
     const preOrder = function(node, depth) {
         if (!node) return
-        result[depth] ? result[depth].push(node.val) : result[depth] = [node.val]
+
+        result[depth]
+            ? result[depth].push(node.val) 
+            : result[depth] = [node.val]
+            
         node.left && preOrder(node.left, depth + 1)
         node.right && preOrder(node.right, depth + 1)
     }
