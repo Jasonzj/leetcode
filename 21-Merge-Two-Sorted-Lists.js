@@ -13,8 +13,8 @@ const mergeTwoLists = function (l1, l2) {
         curr = curr.next
     }
 
-    if (!l1) { curr.next = l2; }
-    if (!l2) { curr.next = l1; }
+    if (!l1) { curr.next = l2 }
+    if (!l2) { curr.next = l1 }
 
     return result.next
 }
