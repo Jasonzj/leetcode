@@ -12,14 +12,14 @@
 const diameterOfBinaryTree = function(root) {
     if (!root) return 0
     let res = 1
-    const preOrder = function(node) {
+    const depth = function(node) {
         if (!node) return 0
-        const L = preOrder(node.left)
-        const R = preOrder(node.right)
+        const L = depth(node.left)
+        const R = depth(node.right)
         res = Math.max(res, L + R + 1)
         return Math.max(L, R) + 1
     }
-    preOrder(root)
+    depth(root)
     return res - 1
 }
 
