@@ -62,5 +62,5 @@ const t = {
 const i = new BSTIterator(t)
 const a = []
 while (i.hasNext()) {
-    i.next()
+    a.push(i.next())
 }
