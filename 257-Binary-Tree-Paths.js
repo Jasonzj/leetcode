@@ -14,8 +14,6 @@ const binaryTreePaths = function(root) {
     const result = []
 
     const preOrder = function(node, path) {
-        if (!node) return
-
         path += node.val
 
         if (!node.left && !node.right) result.push(path)

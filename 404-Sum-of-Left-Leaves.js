@@ -13,7 +13,6 @@ const sumOfLeftLeaves = function (root) {
     if (!root) return 0
     let result = 0
     const preOrder = function (node, isLeft) {
-        if (!node) return
         if (!node.left && !node.right && isLeft) {
             result += node.val
         }

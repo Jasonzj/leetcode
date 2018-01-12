@@ -13,7 +13,6 @@ const postorderTraversal = function(root) {
     if (!root) return []
     const result = []
     const postOrder = function(node) {
-        if (!node) return
         node.left && postOrder(node.left)
         node.right && postOrder(node.right)
         result.push(node.val)

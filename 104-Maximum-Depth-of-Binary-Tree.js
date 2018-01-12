@@ -13,7 +13,6 @@ const maxDepth = function (root) {
     let res = 0
     if (!root) return res
     const postOrder = function (node, depth) {
-        if (!node) return
         node.left && postOrder(node.left, depth + 1)
         node.right && postOrder(node.right, depth + 1)
         if (!node.left && !node.right) res = Math.max(res, depth)
