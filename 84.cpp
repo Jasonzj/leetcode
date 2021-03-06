@@ -4,6 +4,16 @@
  * [84] 柱状图中最大的矩形
  */
 
+/*
+ * 思路
+ * curent index = i, i下标的值比a, b都小
+ * stack = [0, a, b]
+ * 对于a而言, (0, a-1], A[x]值都 >= A[i]
+ * [a+1 ... i-1]，A[x]值都 >= A[i]
+ * 对于b而言, [b+1 ... i-1], A[x]值都 >= A[b] 
+ * [a+1 ... b-1], A[x]值都 >= [b]
+ * i - a - 1 就是最大宽度
+*/
 // @lc code=start
 class Solution {
 public:
