@@ -25,15 +25,17 @@ public:
         vector<vector<int>> res; 
 
         while (!q.empty()) {
-            res.emplace_back();
-            int qSize = q.size();
+            res.emplace_back();      // 生成新的一层
+            int qSize = q.size();    // 记录当前层的结点个数
 
-            while (qSize--) {
+            // 取出当前层结点
+            while (qSize--) {     
                 auto cur = q.front();
                 q.pop();
 
                 res.back().push_back(cur->val);
 
+                // 把下一层结点放到队列
                 if (cur->left) q.push(cur->left);
                 if (cur->right) q.push(cur->right);
             }
@@ -43,4 +45,33 @@ public:
     }
 };
 // @lc code=end
+
+// 使用双List
+class Solution {
+public:
+    vector<vector<int>> levelOrder(TreeNode* root) {
+        vector<TreeNode*> cur;
+        vector<TreeNode*> next;
+        vector<vector<int>> res;
+
+        if (root) {
+            cur.push_back(root);
+        }
+
+        while (!cur.empty()) {
+            next.clear();
+            res.emplace_back();
+
+            for (auto c : cur) {
+                res.back().push_back(c->val);
+                if (c->left) next.push_back(c->left);
+                if (c->right) next.push_back(c->right);
+            }
+
+            cur.swap(next);
+        }
+
+        return res;
+    }
+};
 

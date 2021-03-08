@@ -16,16 +16,17 @@ public:
         for (auto c : s) {
             if (c >= '0' && c <= '9') {
                 num = num * 10 + c - '0';
-            } else if (c == '[') {
+            } else if (c == '[') {  // 把当前记录字符res和num入栈, 并清空res和num
                 nums.push(num);
                 strs.push(res);
                 res.clear();
                 num = 0;
-            } else if (c == ']' ) {
+            } else if (c == ']' ) { 
                 int times = nums.top();
                 nums.pop();
+                // res = lastStr + num * curStr(括号里的字符)
                 for (int i = 0; i < times; i++) {
-                    strs.top() += res;
+                    strs.top() += res;   
                 }
                 res = strs.top();
                 strs.pop();

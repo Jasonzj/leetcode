@@ -26,12 +26,12 @@ public:
         while (cur != NULL || !s.empty()) {
             if (cur != NULL) {
                 s.push(cur);
-                cur = cur->left;
+                cur = cur->left; // 左
             } else {
                 cur = s.top();
                 s.pop();
-                res.push_back(cur->val);
-                cur = cur->right; 
+                res.push_back(cur->val); // 中
+                cur = cur->right;  // 右
             }
         }
 
