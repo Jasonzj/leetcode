@@ -9,21 +9,21 @@ class StockSpanner {
 public:
     vector<int> prices;
     stack<int> s;
+    
     StockSpanner() {
         
     }
     
     int next(int price) {
-        int count = 0;
+        int index = prices.size();
         
         while (!s.empty() && prices[s.top()] <= price) {
             s.pop();
         }
         
-        count = s.empty() ? prices.size() + 1 : prices.size() - s.top();
-        s.push(prices.size());
+        int count = s.empty() ? index + 1 : index - s.top();
+        s.push(index);
         prices.push_back(price);
-        
         return count;
     }
 };
