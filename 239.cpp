@@ -7,6 +7,7 @@
 // @lc code=start
 class Solution {
 private:
+    // 单调队列
     deque<int> q;
 
 public:
