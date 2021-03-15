@@ -23,7 +23,7 @@ public:
         };
         
         ListNode res(0), *tail = &res;
-        priority_queue<ListNode*, vector<ListNode*>, decltype(cmp)> h(cmp);
+        priority_queue<ListNode*, vector<ListNode*>, decltype(cmp)> h(cmp);   // 小堆
         
         for (auto& l : lists) {
             if (l) h.push(l);
