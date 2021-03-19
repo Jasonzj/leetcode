@@ -30,6 +30,7 @@ public:
             }
             tail = tail->next;
         }
+
         if (l1 == NULL) { tail->next = l2; }
         if (l2 == NULL) { tail->next = l1; }
         
