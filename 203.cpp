@@ -15,13 +15,14 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+ // 新链表，按条件添加到尾部
 class Solution {
 public:
     ListNode* removeElements(ListNode* head, int val) {
         ListNode dummy(0); 
         ListNode* tail = &dummy;
 
-        while (head != NULL) { 
+        while (head) { 
             if (head->val != val) {
                 tail->next = head;
                 tail = tail->next;
@@ -30,6 +31,25 @@ public:
         }
 
         tail->next = nullptr;
+
+        return dummy.next;
+    }
+};
+
+class Solution {
+public:
+    ListNode* removeElements(ListNode* head, int val) {
+        ListNode dummy;
+        dummy.next = head;
+        ListNode* cur = &dummy;
+        
+        while (cur && cur->next) {
+            if (cur->next->val == val) {
+                cur->next = cur->next->next;
+            } else {
+                cur = cur->next;
+            }
+        }
 
         return dummy.next;
     }
