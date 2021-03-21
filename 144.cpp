@@ -37,3 +37,26 @@ public:
 };
 // @lc code=end
 
+
+class Solution {
+public:
+    vector<int> preorderTraversal(TreeNode* root) {
+        vector<int> res;
+        stack<TreeNode*> s;
+        if (!root) return res;
+        TreeNode* cur = root;
+
+        while (cur || !s.empty()) {
+            while (cur) {
+                s.push(cur);
+                res.push_back(cur->val);
+                cur = cur->left;
+            }
+            cur = s.top();
+            s.pop();
+            cur = cur->right;
+        }
+
+        return res;
+    }
+};

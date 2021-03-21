@@ -16,6 +16,7 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+ // 前序
 class Solution {
 public:
     bool isValidBST(TreeNode* root) {
@@ -43,4 +44,35 @@ public:
     }
 };
 // @lc code=end
+
+// 中序
+class Solution {
+public:
+    bool isValidBST(TreeNode* root) {
+        if (!root) return false;
+        
+        int64_t preNum = INT64_MIN;
+        stack<TreeNode*> s;
+        TreeNode* cur = root;
+        
+        while (cur || !s.empty()) {
+            if (cur) {
+                s.push(cur);
+                cur = cur->left;
+            } else {
+                cur = s.top();
+                s.pop();
+                
+                if (preNum >= cur->val) {
+                    return false;
+                }
+                preNum = cur->val;
+                
+                cur = cur->right;
+            }
+        }
+
+        return true;
+    }
+};
 
