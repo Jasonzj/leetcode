@@ -23,8 +23,8 @@ public:
         stack<TreeNode*> s; 
         TreeNode* cur = root;
 
-        while (cur != NULL || !s.empty()) {
-            if (cur != NULL) {
+        while (cur || !s.empty()) {
+            if (cur) {
                 s.push(cur);
                 cur = cur->left; // 左
             } else {
