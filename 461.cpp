@@ -10,10 +10,10 @@ public:
     int hammingDistance(int x, int y) {
         x ^= y;
         int count = 0;
-        // 移位计数
+        // 每次消除最后一个1
         while (x) {
-            if (x & 1) count++;
-            x >>= 1;
+            x &= x - 1;
+            count++;
         }
         return count;
     }
