@@ -144,3 +144,50 @@ public:
         return merge(sortList(head), sortList(back));
     }
 };
+
+class Solution {
+    ListNode* findMiddleNode(ListNode* head) {
+        ListNode* slow = head;
+        ListNode* fast = head;
+        ListNode* pre = slow;
+        
+        while (fast && fast->next) {
+            pre = slow;
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+        
+        return fast ? slow : pre;
+    }
+public:
+    ListNode* sortList(ListNode* head) {
+        if (!head || !head->next) {
+            return head;
+        }
+        
+        auto mid = findMiddleNode(head);
+        auto back = mid->next;
+        mid->next = nullptr;
+        
+        auto p1 = sortList(head);
+        auto p2 = sortList(back);
+        
+        ListNode dummy;
+        ListNode* tail = &dummy;
+        
+        while (p1 || p2) {
+            if (!p2 || p1 && p1->val <= p2->val) {
+                tail->next = p1;
+                p1 = p1->next;
+            } else {
+                tail->next = p2;
+                p2 = p2->next;
+            }
+            tail = tail->next;
+        }
+        
+        tail->next = nullptr;
+        
+        return dummy.next;
+    }
+};
