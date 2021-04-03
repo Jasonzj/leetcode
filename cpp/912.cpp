@@ -46,3 +46,41 @@ public:
 };
 // @lc code=end
 
+class Solution {
+    void swap(vector<int> &nums, int i, int j) {
+        int tmp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = tmp;
+    }
+    
+    void qSort(vector<int> &nums, int start, int end) {
+        if (start >= end || start + 1 >= end) return;
+        
+        int mid = start + ((end - start) >> 1);
+        int x = nums[mid];
+        
+        int l = start, i = start, r = end - 1;
+        
+        while (i <= r) {
+            if (nums[i] < x) {
+                swap(nums, l++, i++);
+            } else if (nums[i] == x) {
+                i++;
+            } else {
+                swap(nums, r--, i);
+            }
+        }
+        
+        qSort(nums, start, l);
+        qSort(nums, i, end);
+    }
+public:
+    vector<int> sortArray(vector<int>& nums) {
+        if (nums.empty() || nums.size() == 1) return nums;
+        
+        qSort(nums, 0, nums.size());
+        
+        return nums;
+    }
+};
+
