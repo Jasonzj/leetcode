@@ -47,7 +47,7 @@ class Solution {
         int lcnt = l - start;
         int mcnt = i - l;
         // 如果第k个数落在左区间
-        if (k <= lcnt)
+        if (k < lcnt)
              return kth(nums, start, l, k);
         // 如果第k个数落在右区间
         if (k >= (lcnt + mcnt))
@@ -83,7 +83,7 @@ class Solution {
         int lcnt = l - start;
         int mcnt = i - l;
         // 如果第k个数落在左区间
-        if (k <= lcnt) kth(nums, start, l, k);
+        if (k < lcnt) kth(nums, start, l, k);
         // 如果第k个数落在右区间
         if (k >= (lcnt + mcnt)) kth(nums, i, end, k - lcnt - mcnt);
         // 如果第k个数落在中间，那么直接返回
