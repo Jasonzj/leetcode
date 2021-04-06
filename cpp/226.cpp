@@ -34,19 +34,19 @@ public:
 // @lc code=end
 
 class Solution {
-    void postOrder(TreeNode* root) {
+    void preOrder(TreeNode* root) {
         if (!root) return;
         
         TreeNode* tmp = root->left;
         root->left = root->right;
         root->right = tmp;
         
-        postOrder(root->left);
-        postOrder(root->right);
+        preOrder(root->left);
+        preOrder(root->right);
     }
 public:
     TreeNode* invertTree(TreeNode* root) {
-        postOrder(root);
+        preOrder(root);
         return root;
     }
 };
